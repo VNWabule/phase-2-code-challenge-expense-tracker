@@ -24,4 +24,23 @@ A simple and stylish expense tracking application built with **React**. Easily a
 - `SearchBar.js`: Input field to filter expenses
 
 
+## 📦 Getting Started
 
+1. **Clone the repository:**
+   ```bash
+   git clone https://github.com/VNWabule/phase-2-code-challenge-expense-tracker
+   cd expense-tracker
+
+2. **Install Dependencies**
+    ```bash
+    npm install
+
+3. **Start the App**
+    ```bash
+    npm start
+
+## 🔮 Upcoming Improvements
+- Persist data to localStorage (reload-safe expenses)
+- Add chart visualization for categories
+- Export data to CSV
+- Support for editing/deleting entries
