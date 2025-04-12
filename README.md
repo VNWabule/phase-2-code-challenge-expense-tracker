@@ -8,13 +8,17 @@ A simple and stylish expense tracking application built with **React**. Easily a
 - Search and filter expenses by name or description
 - Stylish, card-based layout for intuitive use
 - Responsive and clean user interface
-- Data persists with `localStorage` (to be added)
+- Data persists with `localStorage`
+- Sort expenses by **category** or **description**
+- Delete specific expenses from the list
+
 
 ## 🛠️ Technologies Used
 
-- React (with Hooks)
-- JavaScript (ES6+)
+- React 
+- JavaScript 
 - CSS
+- localStorage for persistence
 
 ## 🧩 Components
 
@@ -22,7 +26,7 @@ A simple and stylish expense tracking application built with **React**. Easily a
 - `ExpenseForm.js`: Form to add new expenses
 - `ExpenseTable.js`: Table to display expenses
 - `SearchBar.js`: Input field to filter expenses
-
+- `index.css` : Controls the look of the table and form
 
 ## 📦 Getting Started
 
@@ -40,7 +44,6 @@ A simple and stylish expense tracking application built with **React**. Easily a
     npm start
 
 ## 🔮 Upcoming Improvements
-- Persist data to localStorage (reload-safe expenses)
 - Add chart visualization for categories
 - Export data to CSV
 - Support for editing/deleting entries

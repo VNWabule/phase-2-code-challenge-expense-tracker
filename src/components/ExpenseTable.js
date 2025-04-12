@@ -5,7 +5,7 @@ const formatDate = (dateString) => {
     return `${month}/${day}/${year}`;
   };
 
-const ExpenseTable = ({ expenses }) => (
+const ExpenseTable = ({ expenses, onDelete }) => (
   <table style={{ width: '100%', borderCollapse: 'collapse' }}>
     <thead>
       <tr style={{ backgroundColor: '#333', color: '#fff' }}>
@@ -24,6 +24,11 @@ const ExpenseTable = ({ expenses }) => (
           <td>{expense.category}</td>
           <td>{expense.amount}</td>
           <td>{formatDate(expense.date)}</td>
+          <td>
+            <button onClick={() => onDelete(index)} style={{ color: 'red' }}>
+              Delete
+            </button>
+          </td>
         </tr>
       ))}
     </tbody>

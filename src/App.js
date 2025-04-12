@@ -16,6 +16,21 @@ const App = () => {
     amount: '',
     date: ''
   });
+  const [sortBy, setSortBy] = useState(null);
+
+const handleDelete = (indexToRemove) => {
+  setExpenses(prev => prev.filter((_, index) => index !== indexToRemove));
+};
+
+ const filteredExpenses = expenses.filter((e) =>
+    e.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
+    e.description.toLowerCase().includes(searchTerm.toLowerCase())
+  );
+
+const sortedExpenses = [...filteredExpenses].sort((a, b) => {
+  if (!sortBy) return 0;
+  return a[sortBy].localeCompare(b[sortBy]);
+});
 
   useEffect(() => {
     localStorage.setItem('expenses', JSON.stringify(expenses));
@@ -32,10 +47,7 @@ const App = () => {
     setFormData({ name: '', description: '', category: '', amount: '', date: '' });
   };
 
-  const filteredExpenses = expenses.filter((e) =>
-    e.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
-    e.description.toLowerCase().includes(searchTerm.toLowerCase())
-  );
+ 
 
   return (
     <div style={{ display: 'flex', height: '100vh', fontFamily: 'Arial, sans-serif' }}>
@@ -44,7 +56,21 @@ const App = () => {
         <h1>Expense Tracker</h1>
         <p>Start keeping control of your finances with this app. Record, categorize and analyze your spending.</p>
         <SearchBar searchTerm={searchTerm} onSearch={setSearchTerm} />
-        <ExpenseTable expenses={filteredExpenses} />
+        <div style={{ marginBottom: '20px' }}>
+        <label htmlFor="sort" style={{ marginRight: '10px' }}>Sort By:</label>
+        <select
+          id="sort"
+          value={sortBy || ''}
+          onChange={(e) => setSortBy(e.target.value)}
+          style={{ padding: '8px' }}
+        >
+        <option value="">None</option>
+        <option value="description">Description</option>
+        <option value="category">Category</option>
+        </select>
+        </div>
+
+        <ExpenseTable expenses={sortedExpenses}  onDelete={handleDelete} />
       </div>
     </div>
   );
